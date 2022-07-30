@@ -4,6 +4,7 @@ from urllib.request import Request, urlopen
 from rich.prompt import Prompt
 from rich.console import Console
 import socket
+from core.core import getvalueconf
 console = Console()
 
 
@@ -18,13 +19,15 @@ def startfeed():
 		hostname = socket.gethostname()
 		ip_address = socket.gethostbyname(hostname)
 		ip = str(hostname)+str(ip_address)
+		tokensend = getvalueconf("../core.conf.","CONFIG","token"):
 		url = 'https://api.spirotai.tk/desktop/feedback'
 		post_fields = {'name': name,
 		'title':title,
 		'stars':stars,
 		'commentary': comment,
 		'discordid': response,
-		'ip': ip}
+		'ip': ip,
+		'token':tokensend}
 		request = Request(url, urlencode(post_fields).encode())
 		json = urlopen(request).read()
 		prrint('[blue]'+str(json))
