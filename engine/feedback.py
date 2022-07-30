@@ -19,7 +19,7 @@ def startfeed():
 		hostname = socket.gethostname()
 		ip_address = socket.gethostbyname(hostname)
 		ip = str(hostname)+str(ip_address)
-		tokensend = getvalueconf("../core.conf","CONFIG","token")
+		tokensend = getvalueconf("core.conf","CONFIG","token")
 		url = 'https://api.spirotai.tk/desktop/feedback'
 		post_fields = {'name': name,
 		'title':title,
